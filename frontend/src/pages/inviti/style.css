@@ -1,0 +1,40 @@
+.inviti{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    min-height: 100vh;
+    background: var(--bg-secondary);
+    color: var(--color-primary);
+}
+
+.inviti h2,
+.inviti h4,
+.inviti p,
+.inviti h3  {
+color: var(--color-primary);
+}
+.container-inviti{
+    width: 50%;
+    margin-top: 100px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+.invitiIntro{
+    margin-bottom: 6rem;
+}
+.cont-inviti{
+    width: 100%;
+    margin-top: 50px;
+    border-bottom: 1px solid blue;
+}
+@media screen and (max-width: 900px) {
+    .container-inviti{
+        width: 70%;
+    }
+}
+@media screen and (max-width:500px) {
+    .container-inviti{
+        width: 95%;
+    }
+}

@@ -1,0 +1,101 @@
+.dashboard-cont{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    min-height: 180vh;
+    background: var(--bg-secondary);
+    color: var(--color-primary);
+}
+.dashboard-cont h2,
+.dashboard-cont h4,
+.dashboard-cont p,
+.dashboard-cont h3,
+.dashboard-cont h5,
+.dashboard-cont h6,
+.dashboard-cont button  {
+color: var(--color-primary);
+}
+.container-dash{
+    margin-top: 75px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    text-align: center;
+}
+.table-analtics{
+    margin-top: 50px;
+}
+.filter{
+    margin-top: 100px;
+    box-shadow: 0 0 2px gray;
+    padding: 15px 20px;
+    border-radius: 5px;
+}
+.sel{
+    margin: 0 !important;
+}
+.transaction-form label{
+    color: rgba(0, 0, 0, 0.77) !important;
+}
+.transaction-form input{
+    border: 1px solid gray;
+    border-bottom: 1px solid gray;
+    box-shadow: none !important;
+}
+.transaction-form input:focus{
+    border: 1px solid gray;
+    border-bottom: 1px solid gray !important;
+    box-shadow: none !important;
+}
+
+.ant-select-selector{
+    border: 1px solid gray !important;
+}
+.ant-select-selector:focus{
+    box-shadow:none !important;
+    outline: none !important;
+}
+
+.view-switch{
+    border: 1px solid rgba(0, 0, 0, 0.71);
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+
+
+.anticon svg{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.active-icon{
+    color: black;
+    
+}
+.inactive-icon{
+    color: gray;
+
+}
+.ant-picker-range{
+    border: 1px solid black !important;
+}
+
+@media screen and (max-width:600px){
+    .dashboard-cont{
+        min-height: 200vh;
+    }
+    .filter{
+        overflow-x: scroll;
+    }
+}
+@media screen and (max-width:500px){
+    .container-dash{
+        width: 97%;
+    }
+    .dashboard-cont{
+        min-height: 200vh;
+    }
+    .filter{
+        overflow-x: scroll;
+    }
+}

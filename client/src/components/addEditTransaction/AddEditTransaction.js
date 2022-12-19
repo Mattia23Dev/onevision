@@ -109,8 +109,8 @@ function AddEditTransaction({
           <Input type="text" />
         </Form.Item>
         <div className="d-flex justify-content-end">
-          <button className="primary" type="submit">
-            SAVE
+          <button className="primary btn-add" type="submit">
+            Salva
           </button>
         </div>
       </Form>

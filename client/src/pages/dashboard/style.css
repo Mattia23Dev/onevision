@@ -30,6 +30,7 @@ color: var(--color-primary);
     box-shadow: 0 0 2px gray;
     padding: 15px 20px;
     border-radius: 5px;
+    border: 1px solid rgb(2, 2, 174);
 }
 .sel{
     margin: 0 !important;
@@ -62,7 +63,12 @@ color: var(--color-primary);
     padding: 5px 10px;
 }
 
-
+.btn-add{
+    color: var(--color-primary) !important;
+    padding: 4px 10px;
+    border-radius: 10px;
+    border: 2px solid rgb(1, 1, 196);
+}
 .anticon svg{
     font-size: 20px;
     cursor: pointer;
@@ -86,6 +92,13 @@ color: var(--color-primary);
     }
     .filter{
         overflow-x: scroll;
+        flex-direction: column !important;
+    }
+    .sel1{
+        flex-direction: column !important;
+    }
+    .sel > * {
+        margin: 10px 0;
     }
 }
 @media screen and (max-width:500px){
@@ -97,5 +110,15 @@ color: var(--color-primary);
     }
     .filter{
         overflow-x: scroll;
+        flex-direction: column !important;
+    }
+    .sel1{
+        flex-direction: column !important;
+    }
+    .sel > * {
+        margin: 10px 0;
+    }
+    .table-analtics{
+        margin-top: 50px;
     }
 }

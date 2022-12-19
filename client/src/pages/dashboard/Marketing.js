@@ -1,5 +1,6 @@
-import { DatePicker, Form, message, Select, Table } from "antd";
+import { DatePicker, Form, message, Select} from "antd";
 import axios from "axios";
+import Table from "ant-responsive-table";
 import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import AddEditTransaction from "../../components/addEditTransaction/AddEditTransaction";
@@ -85,35 +86,54 @@ function Marketing() {
 
   const columns = [
     {
-      title: "Date",
+      title: "Data",
       dataIndex: "date",
-      render: (text) => <span>{moment(text).format("YYYY-MM-DD")}</span>,
-      key: 'date'
+      render: (text) => <span>{moment(text).format("DD-MM-YYYY")}</span>,
+      key: 'date',
+      showOnResponse: true,
+      showOnDesktop: true
     },
     {
-      title: "Amount",
+      title: "Punti potenziali",
       dataIndex: "amount",
-      key: "amount"
+      key: "amount",
+      showOnResponse: true,
+      showOnDesktop: true
     },
     {
       title: "Category",
       dataIndex: "category",
-      key: "category"
+      key: "category",
+      showOnResponse: true,
+      showOnDesktop: true
     },
     {
       title: "Type",
       dataIndex: "type",
-      key: "type"
+      key: "type",
+      showOnResponse: true,
+      showOnDesktop: true
     },
     {
       title: "Reference",
       dataIndex: "reference",
-      key: "reference"
+      key: "reference",
+      showOnResponse: true,
+      showOnDesktop: true
+    },
+    {
+      title: "Descrizione",
+      dataIndex: "description",
+      key: "description",
+      showOnResponse: true,
+      showOnDesktop: true
     },
     {
       title: "Actions",
       dataIndex: "actions",
       key:"actions",
+      showOnResponse: true,
+      showOnDesktop: true,
       render: (text, record) => {
         return (
           <div>
@@ -139,7 +159,7 @@ function Marketing() {
       <h2>Lista contatti</h2>
       <p>scrivi la tua lista contatti completa e implementala con le note</p>
       <div className="dash filter d-flex justify-content-between align-items-center">
-        <div className="d-flex">
+        <div className="d-flex sel">
           <div className="d-flex flex-column">
             <h6>Select Frequency</h6>
             <Select value={frequency} onChange={(value) => setFrequency(value)}>
@@ -168,7 +188,7 @@ function Marketing() {
           </div>
         </div>
 
-        <div className="d-flex">
+        <div className="d-flex sel sel1">
           <div>
             <div className="view-switch mx-5">
               <UnorderedListOutlined
@@ -188,10 +208,10 @@ function Marketing() {
             </div>
           </div>
           <button
-            className="primary"
+            className="primary btn-add"
             onClick={() => setShowAddEditTransactionModal(true)}
           >
-            AGGIUNGI
+            Aggiungi
           </button>
         </div>
       </div>
@@ -199,7 +219,17 @@ function Marketing() {
       <div className="table-analtics">
         {viewType === "table" ? (
           <div className="table">
-            <Table columns={columns} dataSource={transactionsData} rowKey={transId}/>
+            <Table 
+            rowKey={transId}
+            //columns={columns} dataSource={transactionsData}
+            antTableProps={{
+              showHeader: true,
+              columns: columns,
+              dataSource: transactionsData,
+              pagination: true,
+              
+            }}
+            mobileBreakPoint={500}/>
           </div>
         ) : (
           <Analatics transactions={transactionsData} />

@@ -1,4 +1,5 @@
-import { DatePicker, Form, message, Select, Table } from "antd";
+import { DatePicker, Form, message, Select } from "antd";
+import Table from "ant-responsive-table";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
@@ -88,33 +89,52 @@ const deleteTransaction = async (record) => {
     {
       title: "Date",
       dataIndex: "date",
-      render: (text) => <span>{moment(text).format("YYYY-MM-DD")}</span>,
-      key: 'date'
+      render: (text) => <span>{moment(text).format("DD-MM-YYYY")}</span>,
+      key: 'date',
+      showOnResponse: false,
+      showOnDesktop: true
     },
     {
       title: "Amount",
       dataIndex: "amount",
-      key: "amount"
+      key: "amount",
+      showOnResponse: true,
+      showOnDesktop: true
     },
     {
       title: "Category",
       dataIndex: "category",
-      key: "category"
+      key: "category",
+      showOnResponse: true,
+      showOnDesktop: true
     },
     {
       title: "Type",
       dataIndex: "type",
-      key: "type"
+      key: "type",
+      showOnResponse: true,
+      showOnDesktop: true
     },
     {
       title: "Reference",
       dataIndex: "reference",
-      key: "reference"
+      key: "reference",
+      showOnResponse: true,
+      showOnDesktop: true
+    },
+    {
+      title: "Descrizione",
+      dataIndex: "description",
+      key: "description",
+      showOnResponse: true,
+      showOnDesktop: true
     },
     {
       title: "Actions",
       dataIndex: "actions",
       key:"actions",
+      showOnResponse: true,
+      showOnDesktop: true,
       render: (text, record) => {
         return (
           <div>
@@ -169,7 +189,7 @@ const deleteTransaction = async (record) => {
           </div>
         </div>
 
-        <div className="d-flex sel">
+        <div className="d-flex sel sel1">
           <div>
             <div className="view-switch mx-5">
               <UnorderedListOutlined
@@ -189,7 +209,7 @@ const deleteTransaction = async (record) => {
             </div>
           </div>
           <button
-            className="primary"
+            className="btn-add"
             onClick={() => setShowAddEditTransactionModal(true)}
           >
             Aggiungi
@@ -200,7 +220,26 @@ const deleteTransaction = async (record) => {
       <div className="table-analtics">
         {viewType === "table" ? (
           <div className="table">
-            <Table columns={columns} dataSource={transactionsData} rowKey={transId}/>
+            <Table rowKey={transId}
+            antTableProps={{
+              showHeader: true,
+              columns: columns,
+              dataSource: transactionsData,
+              pagination: true,
+            }}
+            mobileBreakPoint={500}
+            expandable={{
+              expandedRowRender: (record) => (
+                <p
+                  style={{
+                    margin: 0,
+                  }}
+                >
+                  {record.description}
+                </p>
+              ),
+              rowExpandable: (record) => record.name !== 'Not Expandable',
+            }}/>
           </div>
         ) : (
           <Analatics transactions={transactionsData} />
